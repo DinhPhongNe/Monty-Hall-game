@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="192x192" href="Photos/icon192.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <style>
+        body {
+            width: 400px;
+            height: 700px;
+        }
+
+        .all {
+            width: 400px;
+            height: 700px;
+            background-color: #D9D9D9;
+        }
+
+        .doors {
+            margin-left: 19px;
+        }
+
+        .upper {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 1  px;
+        }
+
+        .bottom {
+            margin-top: 10px;
+            margin-left: 19px;
+        }
+
+        .stats {
+            margin-top: 10px;
+            margin-left: 19px;
+        }
+
+        td {
+            width: 117px;
+            height: 50px;
+            background: #fff;
+            text-align: center;
+            border-radius: 10%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 400px;
+            height: 600px;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="all">
+        <div class="upper">
+
+            <input type="number" id="repeatCount" style="width:50px;height:44px;" value=1>
+            <select id="changeornot" style="width:113px;height:50px;" value="change">
+
+                <option>CHANGE</option>
+
+                <option>NOT CHANGE</option>
+
+            </select>
+            <select id="speed" style="width:100px;height:50px;" value="1">
+
+                <option>speed x1</option>
+                <option>speed x2</option>
+                <option>speed x1000</option>
+
+            </select>
+            <button id="simulateButton" style="width:116px;height:50px;" onclick="i()">
+                Simulate
+            </button>
+
+        </div>
+
+        <div class="doors">
+
+            <img id="door1" style="width:118px;height:200px;" src="Photos/door.png">
+            <img id="door2" style="width:118px;height:200px;" src="Photos/door.png">
+            <img id="door3" style="width:118px;height:200px;" src="Photos/door.png">
+
+        </div>
+
+
+
+        <div class="bottom">
+            <textarea type="text" id="change_or_not_ask" style="width:354px;height:80px;" readonly>
+            </textarea>
+        </div>
+
+        <div class="bottom">
+
+            <input type="text" id="winlosetext" style="width:116px;height:60px;" readonly>
+            <button id="replayButton" style="width:116px;height:65px;" onclick="Replay()">
+                Replay
+            </button>
+            <button id="resetButton" style="width:116px;height:65px;" onclick="resetStats()">
+                Reset
+            </button>
+
+        </div>
+
+        <div class="stats">
+
+            <table>
+
+                <tr>
+                    <td> STATS </td>
+                    <td> WIN </td>
+                    <td> LOSE </td>
+                </tr>
+
+                <tr>
+                    <td> CHANGE </td>
+                    <td id="changeWin"> </td>
+                    <td id="changeLose"> </td>
+                </tr>
+
+                <tr>
+                    <td> NOT CHANGE </td>
+                    <td id="notchangeWin"> </td>
+                    <td id="notchangeLose"> </td>
+                </tr>
+
+            </table>
+
+            <br>
+            <button style="width: 115px;cursor:pointer; border:none;border-radius: 30%;"
+                onclick="window.open('https://en.wikipedia.org/wiki/Monty_Hall_problem', '_blank');">
+                <span>What's Monty Hall?</span>
+            </button>
+
+            <button style="width: 115px; height: 50px;  cursor:pointer; border:none; border-radius: 50%;"
+                onclick="window.open('https://play.google.com/store/apps/details?id=com.mertiq.MontyHallProblem', '_blank');">
+                <span></span>
+                <i class="fab fa-google-play"></i>
+            </button>
+
+            <button id="htp" style="width: 115px; cursor:pointer; border:none; border-radius: 30%;">
+                <span>How to Play</span>
+            </button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Suppose you are in a game and you have the right to choose one of the three doors.
+                        Behind one of the doors is a carriage and behind the others there are goats.
+                        One of the doors, let's say you choose 1st and the game who knows what's behind the doors, let's
+                        say one of the other doors, with the goat behind it, 3rd.
+                        Then you will have the right to change your choice. Is changing your choice to your advantage or
+                        disadvantage?
+                        To find out, play the game and check the statistics.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+<script src="game.js"></script>
+</body>
